@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tiefgang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="ocean"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-depth">
+      <div class="depth-num"><span id="depthNum">0</span><small> m</small></div>
+      <div class="depth-zone" id="depthZone"></div>
+    </div>
+    <div class="hud-rounds" id="roundDots"></div>
+    <div class="hud-right">
+      <div class="ai-chip" id="aiChip"></div>
+    </div>
+  </div>
+
+  <button id="muteBtn" class="icon-btn" aria-label="Sound"></button>
+
+  <!-- Title -->
+  <section id="title" class="screen">
+    <div class="logo">
+      <h1>TIEF<span>GANG</span></h1>
+      <p class="tagline" data-i18n="tagline"></p>
+    </div>
+    <div class="panel title-panel">
+      <div class="lang-switch" role="tablist">
+        <button data-lang="de">Deutsch</button>
+        <button data-lang="en">English</button>
+      </div>
+      <p class="how" data-i18n="how"></p>
+      <label class="model-label" data-i18n="model"></label>
+      <div id="modelList" class="model-list"></div>
+      <p id="gpuNote" class="note hidden" data-i18n="noGPU"></p>
+      <button id="startBtn" class="btn-primary" data-i18n="start"></button>
+      <button id="noAIBtn" class="btn-link" data-i18n="noAI"></button>
+    </div>
+  </section>
+
+  <!-- Prompt & input -->
+  <section id="play" class="hidden">
+    <div class="prompt-card" id="promptCard">
+      <div class="prompt-meta"><span id="roundLabel"></span><span id="timerNum"></span></div>
+      <h2 id="promptText"></h2>
+      <div class="timer-bar"><div id="timerFill"></div></div>
+    </div>
+
+    <div class="bottom">
+      <div id="result" class="result hidden">
+        <div class="result-tier" id="resTier"></div>
+        <div class="result-answer" id="resAnswer"></div>
+        <div class="result-metres" id="resMetres"></div>
+        <div class="result-comment" id="resComment"></div>
+        <button id="nextBtn" class="btn-primary"></button>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+
+      <form id="answerForm" class="answer-row" autocomplete="off">
+        <input id="answerInput" maxlength="60" spellcheck="false" />
+        <button type="submit" id="diveBtn" class="btn-primary"></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- End -->
+  <section id="end" class="screen hidden">
+    <div class="panel end-panel">
+      <div class="end-label" data-i18n="final"></div>
+      <div class="end-depth"><span id="endDepth">0</span> m</div>
+      <div class="end-zone" id="endZone"></div>
+      <div class="end-best" id="endBest"></div>
+      <ol class="end-list" id="endList"></ol>
+      <div class="end-actions">
+        <button id="againBtn" class="btn-primary" data-i18n="again"></button>
+        <button id="shareBtn" class="btn-ghost" data-i18n="share"></button>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
